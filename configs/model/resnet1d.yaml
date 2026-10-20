@@ -1,0 +1,13 @@
+architecture: resnet1d
+task: diagnostic_superclass
+input:
+  channels: 12
+  sampling_rate: 100
+  length: 1000
+training:
+  epochs: 50
+  batch_size: 64
+  learning_rate: 0.001
+  seed: 42
+optimizer: adamw
+loss: bce_with_logits

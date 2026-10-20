@@ -1,0 +1,18 @@
+# Global experiment parameters (DVC / pipeline inputs).
+# Prefer task-specific files under configs/ for most settings.
+
+seed: 42
+dataset:
+  name: ptb-xl
+  version: "1.0.3"
+  sampling_rate: 100
+
+split:
+  strategy: patient_level
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15
+
+task:
+  name: diagnostic_superclass
+  multilabel: true

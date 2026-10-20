@@ -1,0 +1,1 @@
+﻿# Dataset checksum manifests (skeleton).

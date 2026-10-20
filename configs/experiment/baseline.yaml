@@ -1,0 +1,14 @@
+name: ptbxl-superclass-baseline
+tracking:
+  backend: mlflow
+  experiment_name: ptbxl-baseline
+dataset_config: configs/data/ptbxl.yaml
+model_config: configs/model/xgboost_baseline.yaml
+evaluation:
+  metrics:
+    - auroc
+    - auprc
+    - f1_macro
+    - brier
+  bootstrap_ci: true
+  calibration: true

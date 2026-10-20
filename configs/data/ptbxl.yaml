@@ -1,0 +1,15 @@
+name: ptb-xl
+version: "1.0.3"
+source: https://physionet.org/content/ptb-xl/
+sampling_rates: [100, 500]
+leads: 12
+patient_id_field: patient_id
+recording_id_field: ecg_id
+label_fields:
+  - diagnostic_superclass
+  - diagnostic_subclass
+  - form
+  - rhythm
+split:
+  strategy: patient_level
+  seed: 42

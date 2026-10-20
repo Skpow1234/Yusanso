@@ -1,0 +1,73 @@
+[project]
+name = "health-ml"
+version = "0.1.0"
+description = "ECG Intelligence Platform — reproducible research and MLOps on PTB-XL"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Yusanso Contributors" }]
+keywords = ["ecg", "healthcare-ml", "ptb-xl", "mlops", "research"]
+dependencies = [
+  "numpy",
+  "pandas",
+  "polars",
+  "scipy",
+  "scikit-learn",
+  "pyarrow",
+  "pydantic>=2",
+  "pyyaml",
+]
+
+[project.optional-dependencies]
+classical = ["xgboost", "lightgbm", "catboost"]
+deep = ["torch", "torchmetrics"]
+research = [
+  "jupyterlab",
+  "matplotlib",
+  "statsmodels",
+  "duckdb",
+  "shap",
+  "wfdb",
+]
+tracking = ["mlflow", "dvc", "dvc-s3"]
+serving = ["fastapi", "uvicorn[standard]", "onnxruntime"]
+monitoring = ["prometheus-client", "opentelemetry-api", "opentelemetry-sdk", "evidently"]
+dev = [
+  "pytest",
+  "pytest-cov",
+  "hypothesis",
+  "pandera",
+  "ruff",
+  "mypy",
+  "pre-commit",
+  "httpx",
+]
+
+[project.scripts]
+health-ml-train = "health_ml.training.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/health_ml"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests", "services"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+mypy_path = "src"
+packages = ["health_ml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q --cov=health_ml --cov-report=term-missing"

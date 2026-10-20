@@ -1,0 +1,24 @@
+# DVC pipeline skeleton — expand as stages mature.
+# Do not commit raw PTB-XL waveforms into Git.
+
+stages:
+  validate_dataset:
+    cmd: python -m health_ml.data.validation.checks
+    deps:
+      - src/health_ml/data/validation/checks.py
+      - params.yaml
+    params:
+      - dataset
+    outs:
+      - data/processed/.gitkeep
+
+  prepare_splits:
+    cmd: python -m health_ml.data.splitting.patient_split
+    deps:
+      - src/health_ml/data/splitting/patient_split.py
+      - data/processed/.gitkeep
+    params:
+      - seed
+      - split
+    outs:
+      - data/splits/.gitkeep

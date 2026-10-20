@@ -1,0 +1,12 @@
+runtime: fastapi
+model_alias: champion
+preload_at_startup: true
+response_includes:
+  - model_version
+  - task
+  - scores
+  - threshold_config_version
+  - request_id
+disclaimer: research_only
+latency_slo:
+  p95_ms: 200

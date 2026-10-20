@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# Environments / secrets
+.env
+.env.*
+!.env.example
+*.pem
+secrets/
+
+# Data (do not commit raw clinical datasets)
+data/raw/**
+!data/raw/.gitkeep
+data/processed/**
+!data/processed/.gitkeep
+data/splits/**
+!data/splits/.gitkeep
+*.h5
+*.hdf5
+*.dat
+*.hea
+*.mat
+
+# DVC / MLflow local state
+.dvc/cache/
+.dvc/tmp/
+mlruns/
+mlartifacts/
+.minio/
+
+# Notebooks / IDE
+.ipynb_checkpoints/
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker / local mounts
+tmp/
+logs/
